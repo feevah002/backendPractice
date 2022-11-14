@@ -1,6 +1,6 @@
 const express = require("express"),
       app = express(),
-      Item = require("./items/models")
+      Item = require("./items/model")
       mongoose = require("mongoose")
       bodyParser = require("body-parser"),
       itemRoutes = require("./items/routes")

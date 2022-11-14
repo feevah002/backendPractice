@@ -17,4 +17,6 @@ exports.editItem = async (id, newData)=>{
   const  editItem = Item.findByIdAndUpdate(id, newData)
   return editItem
 }
-exports.delete
+exports.remItem = async (id)=>{
+  const remitem = await Item.findByIdAndRemove(id)
+}
