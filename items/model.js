@@ -7,7 +7,7 @@ const itemSchema = mongoose.Schema({
     required:[true,"name must be specified"]
   },
   age:{
-    type:String,
+    type:Number,
     required:[true,"age must be specified"]
   }
 })

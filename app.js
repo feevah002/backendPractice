@@ -3,7 +3,8 @@ const express = require("express"),
       Item = require("./items/model")
       mongoose = require("mongoose")
       bodyParser = require("body-parser"),
-      itemRoutes = require("./items/routes")
+      itemRoutes = require("./items/routes"),
+      methodOverride = require("method-override")
 
 // connecting dtabase
 main().catch(err=>{console.log(err)});
@@ -12,13 +13,17 @@ async function main(){
 }
 // extras
 app.set("view engine", "ejs");
-app.use(bodyParser.json());
+app.use(methodOverride("_method"))
+app.use(bodyParser.urlencoded({extended:true}));
 
 // root routes
 app.get("/", (req,res,next)=>{
   res.json({
     message: "Arise MERN Developers",
   })
+})
+app.get("/form", (req,res)=>{
+  res.render("index")
 })
 app.use("/items", itemRoutes)
 //create date into data base

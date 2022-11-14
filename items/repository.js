@@ -9,7 +9,7 @@ exports.itemsById = async (id)=>{
    return item
 
 }
-exports.createItem = async (payload)=>{
+exports.createItem = async payload =>{
   const newItem = await Item.create(payload);
   return newItem;
 }

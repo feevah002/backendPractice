@@ -30,7 +30,9 @@ exports.findById = async (req,res)=>{
   }
 }
 exports.createNewItem = async (req, res)=>{
+  console.log(req.body.name)
   try{
+    
     let payload ={
       name: req.body.name,
       age:req.body.age
@@ -49,7 +51,7 @@ exports.createNewItem = async (req, res)=>{
 }
 exports.editItem = async (req,res)=>{
   try{
-    id = req,params.id;
+    id = req.params.id;
     newData = {
       name : req.body.name,
       age : req.body.age,
@@ -57,12 +59,12 @@ exports.editItem = async (req,res)=>{
     let edited = await itemRepo.editItem(id, newData)
     res.status(200).json({
       status:true,
-      data:"edited data:", edited
+      data: edited
     })
 
   } catch(err){
     res.status(500).json({
-      status:true,
+      status:false,
       error:err,
     })
   }
@@ -70,6 +72,7 @@ exports.editItem = async (req,res)=>{
 
 exports.removeItem = async (req,res)=>{
   try{
+    id = req.params.id;
     delItem = await itemRepo.remItem(id);
     res.status(200).json({
       status:true,
